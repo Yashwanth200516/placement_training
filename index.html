@@ -1,11 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=>, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Friendship Presentation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    overflow:hidden;
+    background:linear-gradient(135deg,#667eea,#764ba2);
+}
+
+.slide{
+    width:100vw;
+    height:100vh;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    color:white;
+    text-align:center;
+    padding:40px;
+    animation:fade 0.6s ease;
+}
+
+.active{
+    display:flex;
+}
+
+h1{
+    font-size:4rem;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:1.5rem;
+    max-width:800px;
+    line-height:1.6;
+}
+
+ul{
+    font-size:1.6rem;
+    list-style:none;
+}
+
+li{
+    margin:15px 0;
+}
+
+.controls{
+    position:fixed;
+    bottom:30px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+button{
+    padding:12px 30px;
+    border:none;
+    border-radius:10px;
+    font-size:18px;
+    cursor:pointer;
+    background:white;
+    color:#333;
+    font-weight:bold;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+.slide-number{
+    position:fixed;
+    top:20px;
+    right:30px;
+    color:white;
+    font-size:20px;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+</style>
 </head>
 <body>
-    <p>hello</p>
+
+<div class="slide active">
+    <h1>🤝 Friendship</h1>
+    <p>A Frontend Presentation on the Importance of Friendship</p>
+</div>
+
+<div class="slide">
+    <h1>What is Friendship?</h1>
+    <p>
+        Friendship is a relationship of mutual affection, trust,
+        support, and understanding between people.
+    </p>
+</div>
+
+<div class="slide">
+    <h1>Qualities of a Good Friend</h1>
+    <ul>
+        <li>✔ Trustworthy</li>
+        <li>✔ Honest</li>
+        <li>✔ Supportive</li>
+        <li>✔ Respectful</li>
+        <li>✔ Caring</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h1>Why Friendship Matters</h1>
+    <p>
+        Friends provide emotional support, reduce stress,
+        increase happiness, and help us grow as individuals.
+    </p>
+</div>
+
+<div class="slide">
+    <h1>Benefits of Friendship</h1>
+    <ul>
+        <li>💖 Better Mental Health</li>
+        <li>😊 Increased Happiness</li>
+        <li>🚀 Personal Growth</li>
+        <li>🌍 Social Connection</li>
+    </ul>
+</div>
+
+<div class="slide">
+    <h1>Frontend Developer Analogy</h1>
+    <p>
+        Just as components work together to build a beautiful UI,
+        friends work together to build a beautiful life.
+    </p>
+</div>
+
+<div class="slide">
+    <h1>Thank You</h1>
+    <p>
+        "A true friend is the greatest gift of life."
+    </p>
+</div>
+
+<div class="slide-number" id="slideNumber">1 / 7</div>
+
+<div class="controls">
+    <button onclick="prevSlide()">⬅ Previous</button>
+    <button onclick="nextSlide()">Next ➡</button>
+</div>
+
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const slideNumber = document.getElementById('slideNumber');
+
+function showSlide(index){
+    slides.forEach(slide => slide.classList.remove('active'));
+    slides[index].classList.add('active');
+    slideNumber.innerText = `${index+1} / ${slides.length}`;
+}
+
+function nextSlide(){
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}
+
+function prevSlide(){
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+}
+
+document.addEventListener("keydown", (e)=>{
+    if(e.key==="ArrowRight") nextSlide();
+    if(e.key==="ArrowLeft") prevSlide();
+});
+</script>
+
 </body>
 </html>
