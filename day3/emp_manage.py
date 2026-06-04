@@ -30,7 +30,7 @@ while True:
         emp_id = input("Enter Employee ID: ")
         name = input("Enter Name: ")
         department = input("Enter Department: ")
-        salary = float(input("Enter Salary: "))
+        salary = int(input("Enter Salary: "))
 
         emp = Employee(emp_id, name, department, salary)
         employees.append(emp)
@@ -63,7 +63,7 @@ while True:
         found = False
         for emp in employees:
             if emp.emp_id == update_id:
-                new_salary = float(input("Enter New Salary: "))
+                new_salary = int(input("Enter New Salary: "))
                 emp.salary = new_salary
                 print("Salary Updated Successfully!")
                 found = True
