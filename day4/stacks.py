@@ -44,7 +44,7 @@ s1=Stack()
 s1.push('A')
 s1.push('B')
 s1.push('C')
-print(s1)
+
 print(s1.peek())
 print(s1.pop())
 print(s1.peek())

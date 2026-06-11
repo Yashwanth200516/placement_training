@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OOPS Presentation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+    overflow:hidden;
+}
+
+.slide{
+    width:100vw;
+    height:100vh;
+    display:none;
+    padding:50px;
+}
+
+.active{
+    display:block;
+}
+
+h1{
+    text-align:center;
+    margin-bottom:40px;
+    font-size:3rem;
+}
+
+.columns{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    background:rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+.card h2{
+    margin-bottom:15px;
+    color:#38bdf8;
+}
+
+.card p{
+    line-height:1.6;
+}
+
+.controls{
+    position:fixed;
+    bottom:20px;
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.slideNo{
+    position:absolute;
+    top:20px;
+    right:20px;
+    font-size:20px;
+}
+</style>
+</head>
+<body>
+
+<!-- Slide 1 -->
+<div class="slide active">
+    <h1>Object Oriented Programming System</h1>
+
+    <div class="columns">
+        <div class="card">
+            <h2>Introduction</h2>
+            <p>
+                OOPS is a programming paradigm based on objects and classes.
+                It helps organize code efficiently.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Why OOPS?</h2>
+            <p>
+                Improves code reusability, maintainability,
+                security and scalability.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Languages</h2>
+            <p>
+                Java, Python, C++, C#, Kotlin and many
+                modern languages support OOPS.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 2 -->
+<div class="slide">
+    <h1>Core Concepts of OOPS</h1>
+
+    <div class="columns">
+        <div class="card">
+            <h2>Class & Object</h2>
+            <p>
+                Class is a blueprint.
+                Object is an instance of a class.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Encapsulation</h2>
+            <p>
+                Wrapping data and methods together
+                and restricting direct access.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Abstraction</h2>
+            <p>
+                Hiding implementation details and
+                showing only essential features.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 3 -->
+<div class="slide">
+    <h1>Pillars of OOPS</h1>
+
+    <div class="columns">
+        <div class="card">
+            <h2>Inheritance</h2>
+            <p>
+                Allows one class to acquire properties
+                and methods of another class.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Polymorphism</h2>
+            <p>
+                Same method behaves differently
+                based on the object.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Benefits</h2>
+            <p>
+                Reusability, Flexibility,
+                Better Code Structure.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 4 -->
+<div class="slide">
+    <h1>Real World Example</h1>
+
+    <div class="columns">
+        <div class="card">
+            <h2>Class</h2>
+            <p>Car</p>
+        </div>
+
+        <div class="card">
+            <h2>Attributes</h2>
+            <p>Color, Brand, Speed</p>
+        </div>
+
+        <div class="card">
+            <h2>Methods</h2>
+            <p>Start(), Stop(), Accelerate()</p>
+        </div>
+    </div>
+</div>
+
+<!-- Slide 5 -->
+<div class="slide">
+    <h1>Conclusion</h1>
+
+    <div class="columns">
+        <div class="card">
+            <h2>Summary</h2>
+            <p>
+                OOPS provides a structured way
+                to develop software.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Advantages</h2>
+            <p>
+                Reusability, Security,
+                Maintainability.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Thank You</h2>
+            <p>
+                Questions & Discussion
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="slideNo" id="slideNo">1 / 5</div>
+
+<div class="controls">
+    <button onclick="prevSlide()">Previous</button>
+    <button onclick="nextSlide()">Next</button>
+</div>
+
+<script>
+const slides = document.querySelectorAll(".slide");
+const slideNo = document.getElementById("slideNo");
+let current = 0;
+
+function showSlide(index){
+    slides.forEach(slide=>slide.classList.remove("active"));
+    slides[index].classList.add("active");
+    slideNo.innerText = `${index+1} / ${slides.length}`;
+}
+
+function nextSlide(){
+    current = (current + 1) % slides.length;
+    showSlide(current);
+}
+
+function prevSlide(){
+    current = (current - 1 + slides.length) % slides.length;
+    showSlide(current);
+}
+
+document.addEventListener("keydown",(e)=>{
+    if(e.key==="ArrowRight") nextSlide();
+    if(e.key==="ArrowLeft") prevSlide();
+});
+</script>
+
+</body>
+</html>

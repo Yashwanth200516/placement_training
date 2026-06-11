@@ -20,8 +20,8 @@ class Cat(Animal):
     def speak(self):
         print(f"{self.name} says:meow")
 
-# dog=Dog("brownie","lab")
-# cat=Cat('kitty')
+dog=Dog("brownie","lab")
+cat=Cat('kitty')
 
 dog.eat()
 dog.speak()
